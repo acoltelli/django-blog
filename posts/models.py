@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 
-class Article(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
@@ -21,8 +21,8 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    article = models.ForeignKey(
-        Article,
+    post = models.ForeignKey(
+        Post,
         on_delete=models.CASCADE,
         related_name='comments',
     )

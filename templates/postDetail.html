@@ -7,6 +7,6 @@
     <p>{{ object.body }}</p>
   </div>
 
-  <p><a href="{% url 'postEdit' article.pk %}">Edit</a> | <a href="{% url 'postDelete' article.pk %}">Delete</a></p>
-  <p>Back to <a href="{% url 'postList' %}">all posts</a>.</p>
+  <p><a href="{% url 'postEdit' post.pk %}">Edit</a> | <a href="{% url 'postDelete' post.pk %}">Delete</a></p>
+  <p>View <a href="{% url 'postList' %}">all posts</a>.</p>
 {% endblock content %}

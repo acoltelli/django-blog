@@ -2,24 +2,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
-
-from .models import Article
+from .models import Post
 
 
 class postListView(LoginRequiredMixin, ListView):
-    model = Article
+    model = Post
     template_name = 'postList.html'
     login_url = 'login'
 
 
 class postDetailView(LoginRequiredMixin, DetailView):
-    model = Article
+    model = Post
     template_name = 'postDetail.html'
     login_url = 'login'
 
 
 class postUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Article
+    model = Post
     fields = ('title', 'body',)
     template_name = 'postEdit.html'
     login_url = 'login'
@@ -36,7 +35,7 @@ class postUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 class postDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Article
+    model = Post
     template_name = 'postDelete.html'
     success_url = reverse_lazy('postList')
     login_url = 'login'
@@ -53,7 +52,7 @@ class postDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class postCreateView(LoginRequiredMixin, CreateView):
-    model = Article
+    model = Post
     template_name = 'postNew.html'
     fields = ('title', 'body')
     login_url = 'login'

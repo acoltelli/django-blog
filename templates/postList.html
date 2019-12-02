@@ -11,8 +11,11 @@
       </div>
       <div class="card-body">
         <p>{{ post.body }}</p>
+        {% if user.username|stringformat:"s" == post.author|stringformat:"s" %}
         <a href="{% url 'postEdit' post.pk %}">Edit</a> |
         <a href="{% url 'postDelete' post.pk %}">Delete</a>
+        {% endif %}
+
       </div>
       <div class="card-footer">
         {% for comment in post.comments.all %}
